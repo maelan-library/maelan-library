@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ห้องสมุดประชาชนอำเภอแม่ลาน จังหวัดปัตตานี</title>
+  <meta name="description" content="ห้องสมุดประชาชนอำเภอแม่ลาน จังหวัดปัตตานี แหล่งเรียนรู้ตลอดชีวิตสำหรับทุกช่วงวัย" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Charm:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --purple-deep:   #2D1B69;
+      --purple-main:   #5B2D8E;
+      --purple-mid:    #7B3FB5;
+      --purple-light:  #A566D4;
+      --purple-pale:   #F0E8FF;
+      --gold-rich:     #C9A227;
+      --gold-light:    #F0D060;
+      --gold-pale:     #FDF6DC;
+      --white:         #FFFFFF;
+      --off-white:     #FAF8FF;
+      --text-dark:     #1A1035;
+      --text-mid:      #4A3870;
+      --text-light:    #8B7BAE;
+      --shadow-sm:     0 2px 8px rgba(45,27,105,0.10);
+      --shadow-md:     0 6px 24px rgba(45,27,105,0.15);
+      --shadow-lg:     0 12px 48px rgba(45,27,105,0.20);
+      --radius:        14px;
+      --radius-sm:     8px;
+      --transition:    0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(45,27,105,0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 70px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: var(--white); font-weight: 700; font-size: 1rem;
+    }
+    .nav-logo .logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--gold-rich), var(--gold-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: var(--purple-deep);
+    }
+    .nav-logo .logo-text-sub { font-size: 0.75rem; font-weight: 400; opacity: 0.8; }
+    .nav-menu {
+      display: flex; gap: 0.25rem;
+    }
+    .nav-menu a {
+      color: rgba(255,255,255,0.85);
+      padding: 0.5rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem; font-weight: 500;
+      transition: var(--transition);
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+      background: rgba(201,162,39,0.2);
+      color: var(--gold-light);
+    }
+    .nav-actions {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .btn-admin-link {
+      background: linear-gradient(135deg, var(--gold-rich), var(--gold-light));
+      color: var(--purple-deep); padding: 0.45rem 1rem;
+      border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+      transition: var(--transition);
+    }
+    .btn-admin-link:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 0.5rem;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-main) 50%, var(--purple-mid) 100%);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+      padding: 90px 2rem 4rem;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    /* Animated background orbs */
+    .hero-orb {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.15), transparent 70%);
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+    .hero-orb:nth-child(1) { width: 500px; height: 500px; top: -100px; right: -100px; animation-delay: 0s; }
+    .hero-orb:nth-child(2) { width: 300px; height: 300px; bottom: 0; left: 10%; animation-delay: 3s; }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,-20px) scale(1.05); }
+    }
+
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,162,39,0.2); border: 1px solid rgba(201,162,39,0.4);
+      color: var(--gold-light); padding: 0.4rem 1rem;
+      border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 1.25rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .hero-title {
+      font-family: 'Charm', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700; color: var(--white);
+      line-height: 1.3; margin-bottom: 1rem;
+      animation: fadeInUp 0.6s 0.1s ease both;
+    }
+    .hero-title span { color: var(--gold-light); }
+    .hero-subtitle {
+      font-size: 1.1rem; color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s 0.2s ease both;
+    }
+    .hero-buttons {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeInUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-rich), var(--gold-light));
+      color: var(--purple-deep); padding: 0.85rem 2rem;
+      border-radius: 50px; font-weight: 700; font-size: 0.95rem;
+      transition: var(--transition); box-shadow: 0 4px 20px rgba(201,162,39,0.4);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(201,162,39,0.5); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white); padding: 0.85rem 2rem;
+      border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+      transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
+    /* Hero Stats */
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 2.5rem;
+      animation: fadeInUp 0.6s 0.4s ease both;
+    }
+    .stat-item { text-align: center; }
+    .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+
+    /* Hero Staff Cards */
+    .hero-staff {
+      animation: fadeInUp 0.6s 0.2s ease both;
+    }
+    .staff-grid-label {
+      color: var(--gold-light); font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 1rem; opacity: 0.9;
+    }
+    .staff-cards {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    .staff-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius); padding: 1.25rem 1rem;
+      text-align: center; transition: var(--transition);
+    }
+    .staff-card:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .staff-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      object-fit: cover; margin: 0 auto 0.75rem;
+      border: 3px solid var(--gold-rich);
+    }
+    .staff-avatar-placeholder {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 0.75rem;
+      border: 3px solid var(--gold-rich);
+      color: var(--white); font-size: 1.8rem;
+    }
+    .staff-name { color: var(--white); font-weight: 700; font-size: 0.9rem; }
+    .staff-pos { color: rgba(255,255,255,0.65); font-size: 0.78rem; margin-top: 0.2rem; }
+    .staff-loading { color: rgba(255,255,255,0.5); font-size: 0.9rem; text-align: center; grid-column: 1/-1; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== SECTION COMMONS ===== */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow {
+      display: inline-block;
+      color: var(--purple-main); font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.3rem 1rem; border-radius: 20px;
+      background: var(--purple-pale); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Charm', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; color: var(--purple-deep); line-height: 1.3;
+    }
+    .section-subtitle { color: var(--text-mid); margin-top: 0.5rem; font-size: 1rem; }
+    .section-divider {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, var(--gold-rich), var(--gold-light));
+      border-radius: 2px; margin: 1rem auto 0;
+    }
+
+    /* ===== CARDS GRID ===== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+    .card {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm); overflow: hidden;
+      transition: var(--transition); border: 1px solid rgba(91,45,142,0.06);
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .card-img {
+      width: 100%; height: 200px; object-fit: cover;
+    }
+    .card-img-placeholder {
+      width: 100%; height: 200px;
+      background: linear-gradient(135deg, var(--purple-pale), var(--purple-light));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 3rem;
+    }
+    .card-body { padding: 1.5rem; }
+    .card-date {
+      font-size: 0.78rem; color: var(--text-light);
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-title { font-size: 1.05rem; font-weight: 700; color: var(--purple-deep); margin-bottom: 0.5rem; line-height: 1.4; }
+    .card-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-tag {
+      display: inline-block; margin-top: 1rem;
+      font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem;
+      border-radius: 20px; background: var(--purple-pale); color: var(--purple-main);
+    }
+    .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-light); grid-column: 1/-1; }
+    .empty-state i { font-size: 3rem; margin-bottom: 1rem; display: block; }
+
+    /* ===== NEWS SECTION ===== */
+    #news { background: var(--off-white); }
+
+    /* ===== ACTIVITIES ===== */
+    #activities { background: var(--white); }
+
+    /* ===== BOOKS ===== */
+    #books { background: var(--purple-pale); }
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1.5rem;
+    }
+    .book-card {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm); overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(91,45,142,0.06);
+    }
+    .book-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .book-cover {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    }
+    .book-cover-placeholder {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 2.5rem;
+    }
+    .book-info { padding: 1rem; }
+    .book-title { font-weight: 700; font-size: 0.88rem; color: var(--purple-deep); line-height: 1.4; margin-bottom: 0.25rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .book-author { font-size: 0.78rem; color: var(--text-light); }
+    .book-desc { font-size: 0.78rem; color: var(--text-mid); margin-top: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ===== E-BOOK ===== */
+    #ebooks { background: var(--white); }
+    .ebook-card {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      display: flex; gap: 1.25rem; padding: 1.25rem;
+      transition: var(--transition);
+      border: 1px solid rgba(91,45,142,0.06);
+    }
+    .ebook-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .ebook-cover {
+      width: 80px; height: 110px; object-fit: cover;
+      border-radius: var(--radius-sm); flex-shrink: 0;
+    }
+    .ebook-cover-placeholder {
+      width: 80px; height: 110px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1.5rem;
+    }
+    .ebook-body { flex: 1; }
+    .ebook-title { font-weight: 700; font-size: 1rem; color: var(--purple-deep); margin-bottom: 0.4rem; }
+    .ebook-link {
+      display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.75rem;
+      background: var(--purple-main); color: var(--white);
+      padding: 0.45rem 1rem; border-radius: 20px;
+      font-size: 0.82rem; font-weight: 600; transition: var(--transition);
+    }
+    .ebook-link:hover { background: var(--purple-deep); transform: translateX(2px); }
+    .ebooks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* ===== HOURS ===== */
+    #hours {
+      background: linear-gradient(135deg, var(--purple-deep), var(--purple-main));
+      color: var(--white);
+    }
+    #hours .section-eyebrow { background: rgba(255,255,255,0.15); color: var(--gold-light); }
+    #hours .section-title { color: var(--white); }
+    .hours-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; max-width: 900px; margin: 0 auto;
+    }
+    .hours-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius); padding: 2rem;
+      text-align: center; backdrop-filter: blur(6px);
+    }
+    .hours-card i { font-size: 2.5rem; color: var(--gold-light); margin-bottom: 1rem; display: block; }
+    .hours-day { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .hours-time { font-size: 1.4rem; font-weight: 800; color: var(--gold-light); }
+    .hours-note { font-size: 0.85rem; opacity: 0.75; margin-top: 0.4rem; }
+    #hours-content { color: var(--white); text-align: center; font-size: 1rem; opacity: 0.9; line-height: 2; max-width: 700px; margin: 0 auto; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--off-white); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    .contact-info-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--white); padding: 1.25rem; border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--purple-pale); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--purple-main); font-size: 1.1rem;
+    }
+    .contact-label { font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.15rem; }
+    .contact-value { font-weight: 600; color: var(--text-dark); font-size: 0.95rem; }
+    .contact-value a { color: var(--purple-main); }
+    .contact-value a:hover { text-decoration: underline; }
+    .map-frame {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-md); height: 350px;
+    }
+    .map-frame iframe { width: 100%; height: 100%; border: none; }
+    .social-buttons {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.25rem; border-radius: 30px;
+      font-weight: 600; font-size: 0.88rem; transition: var(--transition);
+    }
+    .social-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .social-btn.fb { background: #1877F2; color: #fff; }
+    .social-btn.line { background: #00B900; color: #fff; }
+    .social-btn.msg { background: #0099FF; color: #fff; }
+
+    /* ===== FLOATING SOCIAL ===== */
+    .floating-social {
+      position: fixed; right: 1.5rem; bottom: 5rem; z-index: 900;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .float-btn {
+      width: 46px; height: 46px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #fff; transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+    .float-btn:hover { transform: scale(1.12); }
+    .float-btn.fb { background: #1877F2; }
+    .float-btn.line { background: #00B900; }
+    .float-btn.msg { background: #0099FF; }
+
+    /* ===== BACK TO TOP ===== */
+    #back-to-top {
+      position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 900;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--purple-main); color: #fff;
+      border: none; cursor: pointer; font-size: 1.1rem;
+      box-shadow: var(--shadow-md); transition: var(--transition);
+      opacity: 0; pointer-events: none;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #back-to-top.visible { opacity: 1; pointer-events: auto; }
+    #back-to-top:hover { background: var(--purple-deep); transform: translateY(-3px); }
+
+    /* ===== VISIT COUNTER ===== */
+    .visit-counter {
+      text-align: center; padding: 1rem;
+      background: var(--purple-pale);
+      border-top: 1px solid rgba(91,45,142,0.1);
+    }
+    .visit-counter span { font-size: 0.85rem; color: var(--text-mid); }
+    .visit-counter strong { color: var(--purple-main); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--purple-deep);
+      color: rgba(255,255,255,0.85);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand .brand-name {
+      font-family: 'Charm', serif; font-size: 1.2rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .footer-brand .brand-tagline { font-size: 0.88rem; color: var(--gold-light); margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.8; opacity: 0.7; }
+    .footer-col h4 { color: var(--gold-light); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul a { font-size: 0.85rem; opacity: 0.75; transition: var(--transition); }
+    .footer-col ul a:hover { opacity: 1; color: var(--gold-light); }
+    .footer-bottom {
+      text-align: center; margin-top: 2.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem; opacity: 0.55;
+    }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(45,27,105,0.98);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.5rem; backdrop-filter: blur(12px);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--white); font-size: 1.3rem; font-weight: 600; }
+    .mobile-nav a:hover { color: var(--gold-light); }
+    .mobile-nav .close-btn {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      color: var(--white); font-size: 1.5rem; cursor: pointer;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-staff { order: 2; }
+      .hero-left { order: 1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-menu { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 1rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .ebooks-grid { grid-template-columns: 1fr; }
+      .books-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+      <div>
+        <div>ห้องสมุดประชาชน</div>
+        <div class="nav-logo-sub logo-text-sub">อำเภอแม่ลาน จังหวัดปัตตานี</div>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#hero" class="active">หน้าแรก</a></li>
+      <li><a href="#news">ข่าวสาร</a></li>
+      <li><a href="#activities">กิจกรรม</a></li>
+      <li><a href="#books">หนังสือแนะนำ</a></li>
+      <li><a href="#ebooks">E-Book</a></li>
+      <li><a href="#hours">เวลาทำการ</a></li>
+      <li><a href="#contact">ติดต่อเรา</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="admin.html" class="btn-admin-link"><i class="fa-solid fa-lock"></i> ผู้ดูแล</a>
+      <div class="hamburger" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="close-btn" id="closeNav"><i class="fa-solid fa-xmark"></i></span>
+  <a href="#hero" onclick="closeMobileNav()">หน้าแรก</a>
+  <a href="#news" onclick="closeMobileNav()">ข่าวสาร</a>
+  <a href="#activities" onclick="closeMobileNav()">กิจกรรม</a>
+  <a href="#books" onclick="closeMobileNav()">หนังสือแนะนำ</a>
+  <a href="#ebooks" onclick="closeMobileNav()">E-Book</a>
+  <a href="#hours" onclick="closeMobileNav()">เวลาทำการ</a>
+  <a href="#contact" onclick="closeMobileNav()">ติดต่อเรา</a>
+  <a href="admin.html" style="color:var(--gold-light)"><i class="fa-solid fa-lock"></i> ผู้ดูแลระบบ</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge"><i class="fa-solid fa-star"></i> ยินดีต้อนรับ</div>
+      <h1 class="hero-title">ยินดีต้อนรับสู่<br/><span>ห้องสมุดประชาชน<br/>อำเภอแม่ลาน</span></h1>
+      <p class="hero-subtitle">แหล่งเรียนรู้ตลอดชีวิตสำหรับทุกช่วงวัย<br/>จังหวัดปัตตานี</p>
+      <div class="hero-buttons">
+        <a href="#news" class="btn-primary"><i class="fa-solid fa-newspaper"></i> ข่าวประชาสัมพันธ์</a>
+        <a href="#books" class="btn-outline"><i class="fa-solid fa-magnifying-glass"></i> ค้นหาหนังสือ</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number" id="statBooks">5,000+</div>
+          <div class="stat-label">เล่ม</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">ฟรี</div>
+          <div class="stat-label">บริการ</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">ทุกวัน</div>
+          <div class="stat-label">บริการ</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-staff">
+      <div class="staff-grid-label"><i class="fa-solid fa-users"></i> &nbsp;บุคลากรห้องสมุด</div>
+      <div class="staff-cards" id="staffCards">
+        <div class="staff-loading"><i class="fa-solid fa-spinner fa-spin"></i> กำลังโหลดข้อมูล...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWS ===== -->
+<section id="news">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fa-solid fa-newspaper"></i> ข่าวสาร</span>
+      <h2 class="section-title">ข่าวประชาสัมพันธ์</h2>
+      <p class="section-subtitle">ข่าวสารล่าสุดจากห้องสมุดประชาชนอำเภอแม่ลาน</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid" id="newsGrid">
+      <div class="empty-state"><i class="fa-solid fa-spinner fa-spin"></i><p>กำลังโหลดข้อมูล...</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACTIVITIES ===== -->
+<section id="activities">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fa-solid fa-calendar-days"></i> กิจกรรม</span>
+      <h2 class="section-title">กิจกรรมห้องสมุด</h2>
+      <p class="section-subtitle">กิจกรรมส่งเสริมการเรียนรู้จากห้องสมุดของเรา</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid" id="activitiesGrid">
+      <div class="empty-state"><i class="fa-solid fa-spinner fa-spin"></i><p>กำลังโหลดข้อมูล...</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKS ===== -->
+<section id="books">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fa-solid fa-book"></i> หนังสือ</span>
+      <h2 class="section-title">หนังสือแนะนำ</h2>
+      <p class="section-subtitle">หนังสือน่าอ่านที่บรรณารักษ์แนะนำสำหรับเดือนนี้</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="books-grid" id="booksGrid">
+      <div class="empty-state" style="grid-column:1/-1"><i class="fa-solid fa-spinner fa-spin"></i><p>กำลังโหลดข้อมูล...</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== E-BOOK ===== -->
+<section id="ebooks">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fa-solid fa-tablet-screen-button"></i> E-Book</span>
+      <h2 class="section-title">หนังสืออิเล็กทรอนิกส์</h2>
+      <p class="section-subtitle">E-Book ที่สามารถอ่านออนไลน์ได้ฟรี</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="ebooks-grid" id="ebooksGrid">
+      <div class="empty-state" style="grid-column:1/-1"><i class="fa-solid fa-spinner fa-spin"></i><p>กำลังโหลดข้อมูล...</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOURS ===== -->
+<section id="hours">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fa-solid fa-clock"></i> เวลาทำการ</span>
+      <h2 class="section-title">เวลาเปิด-ปิดบริการ</h2>
+      <div class="section-divider" style="background:linear-gradient(90deg,var(--gold-rich),var(--gold-light))"></div>
+    </div>
+    <div id="hoursContent">
+      <div class="hours-grid">
+        <div class="hours-card">
+          <i class="fa-solid fa-sun"></i>
+          <div class="hours-day">วันจันทร์ – ศุกร์</div>
+          <div class="hours-time">08:30 – 16:30 น.</div>
+          <div class="hours-note">ยกเว้นวันหยุดราชการ</div>
+        </div>
+        <div class="hours-card">
+          <i class="fa-solid fa-moon"></i>
+          <div class="hours-day">วันเสาร์ – อาทิตย์</div>
+          <div class="hours-time">หยุดทำการ</div>
+          <div class="hours-note">และวันหยุดนักขัตฤกษ์</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fa-solid fa-location-dot"></i> ติดต่อ</span>
+      <h2 class="section-title">ติดต่อเรา</h2>
+      <p class="section-subtitle">ยินดีให้บริการและตอบคำถามทุกท่าน</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-list" id="contactInfo">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <div class="contact-label">ที่อยู่</div>
+              <div class="contact-value" id="cAddress">ห้องสมุดประชาชนอำเภอแม่ลาน ถนน... อำเภอแม่ลาน จังหวัดปัตตานี 94180</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div class="contact-label">เบอร์โทรศัพท์</div>
+              <div class="contact-value" id="cPhone"><a href="tel:073-000000">073-000000</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <div class="contact-label">อีเมล</div>
+              <div class="contact-value" id="cEmail"><a href="mailto:library@maelan.go.th">library@maelan.go.th</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-brands fa-facebook"></i></div>
+            <div>
+              <div class="contact-label">Facebook</div>
+              <div class="contact-value" id="cFacebook"><a href="#" target="_blank">ห้องสมุดประชาชนอำเภอแม่ลาน</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="social-buttons" id="socialButtons">
+          <a href="#" target="_blank" class="social-btn fb" id="fbBtn"><i class="fa-brands fa-facebook-f"></i> Facebook Page</a>
+          <a href="#" target="_blank" class="social-btn line" id="lineBtn"><i class="fa-brands fa-line"></i> Line Official</a>
+          <a href="#" target="_blank" class="social-btn msg" id="msgBtn"><i class="fa-brands fa-facebook-messenger"></i> Messenger</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe id="mapEmbed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15876.0!2d101.4!3d6.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzAnMDAuMCJOIDEwMcKwMjQnMDAuMCJF!5e0!3m2!1sth!2sth!4v1699999999999!5m2!1sth!2sth"
+          allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT COUNTER ===== -->
+<div class="visit-counter">
+  <span>ผู้เข้าชมเว็บไซต์: <strong id="visitCount">...</strong> ครั้ง</span>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">ห้องสมุดประชาชนอำเภอแม่ลาน</div>
+      <div class="brand-tagline">"แหล่งเรียนรู้ตลอดชีวิตสำหรับทุกช่วงวัย"</div>
+      <p>ห้องสมุดประชาชนอำเภอแม่ลาน จังหวัดปัตตานี ภายใต้การดูแลของสำนักงานส่งเสริมการศึกษานอกระบบและการศึกษาตามอัธยาศัย (กศน.)</p>
+    </div>
+    <div class="footer-col">
+      <h4>เมนูหลัก</h4>
+      <ul>
+        <li><a href="#hero">หน้าแรก</a></li>
+        <li><a href="#news">ข่าวประชาสัมพันธ์</a></li>
+        <li><a href="#activities">กิจกรรม</a></li>
+        <li><a href="#books">หนังสือแนะนำ</a></li>
+        <li><a href="#ebooks">E-Book</a></li>
+        <li><a href="#hours">เวลาทำการ</a></li>
+        <li><a href="#contact">ติดต่อเรา</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ข้อมูลเพิ่มเติม</h4>
+      <ul>
+        <li><a href="admin.html">ผู้ดูแลระบบ</a></li>
+        <li><a href="#" id="footerFb">Facebook Page</a></li>
+        <li><a href="#" id="footerLine">Line Official</a></li>
+        <li><a href="#" id="footerMsg">Messenger</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="currentYear"></span> ห้องสมุดประชาชนอำเภอแม่ลาน จังหวัดปัตตานี | พัฒนาด้วย Firebase & GitHub Pages</p>
+  </div>
+</footer>
+
+<!-- ===== FLOATING ===== -->
+<div class="floating-social">
+  <a href="#" target="_blank" class="float-btn fb" id="floatFb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="#" target="_blank" class="float-btn line" id="floatLine" title="Line"><i class="fa-brands fa-line"></i></a>
+  <a href="#" target="_blank" class="float-btn msg" id="floatMsg" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+</div>
+<button id="back-to-top" title="กลับขึ้นด้านบน"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- ===== FIREBASE SDK ===== -->
+<script type="module">
+  // ============================================================
+  // 🔧 ตั้งค่า Firebase ของคุณที่นี่
+  // วิธีรับ config: ดูคู่มือใน INSTALL_GUIDE.md
+  // ============================================================
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, getDocs, doc, getDoc, onSnapshot, orderBy, query, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  // ============================================================
+  // HELPERS
+  // ============================================================
+  function formatDate(ts) {
+    if (!ts) return '';
+    const d = ts.toDate ? ts.toDate() : new Date(ts);
+    return d.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  // ============================================================
+  // STAFF
+  // ============================================================
+  async function loadStaff() {
+    const container = document.getElementById('staffCards');
+    try {
+      const snap = await getDocs(collection(db, 'staff'));
+      if (snap.empty) {
+        container.innerHTML = `
+          <div class="staff-card">
+            <div class="staff-avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+            <div class="staff-name">บรรณารักษ์</div>
+            <div class="staff-pos">ห้องสมุดประชาชน</div>
+          </div>`;
+        return;
+      }
+      container.innerHTML = '';
+      snap.forEach(d => {
+        const s = d.data();
+        const img = s.imageUrl
+          ? `<img class="staff-avatar" src="${s.imageUrl}" alt="${s.name}" loading="lazy"/>`
+          : `<div class="staff-avatar-placeholder"><i class="fa-solid fa-user"></i></div>`;
+        container.innerHTML += `
+          <div class="staff-card">
+            ${img}
+            <div class="staff-name">${s.name || ''}</div>
+            <div class="staff-pos">${s.position || ''}</div>
+          </div>`;
+      });
+    } catch(e) {
+      container.innerHTML = '<div class="staff-loading">ไม่สามารถโหลดข้อมูลได้</div>';
+    }
+  }
+
+  // ============================================================
+  // NEWS
+  // ============================================================
+  async function loadNews() {
+    const grid = document.getElementById('newsGrid');
+    try {
+      const q = query(collection(db, 'news'), orderBy('date', 'desc'), limit(6));
+      const snap = await getDocs(q);
+      if (snap.empty) { grid.innerHTML = '<div class="empty-state"><i class="fa-solid fa-newspaper"></i><p>ยังไม่มีข่าวสาร</p></div>'; return; }
+      grid.innerHTML = '';
+      snap.forEach(d => {
+        const n = d.data();
+        const img = n.imageUrl
+          ? `<img class="card-img" src="${n.imageUrl}" alt="${n.title}" loading="lazy"/>`
+          : `<div class="card-img-placeholder"><i class="fa-solid fa-newspaper"></i></div>`;
+        grid.innerHTML += `
+          <div class="card">
+            ${img}
+            <div class="card-body">
+              <div class="card-date"><i class="fa-regular fa-calendar"></i>${formatDate(n.date)}</div>
+              <div class="card-title">${n.title || ''}</div>
+              <div class="card-desc">${n.description || ''}</div>
+            </div>
+          </div>`;
+      });
+    } catch(e) { grid.innerHTML = '<div class="empty-state"><i class="fa-solid fa-triangle-exclamation"></i><p>ไม่สามารถโหลดข้อมูลได้</p></div>'; }
+  }
+
+  // ============================================================
+  // ACTIVITIES
+  // ============================================================
+  async function loadActivities() {
+    const grid = document.getElementById('activitiesGrid');
+    try {
+      const q = query(collection(db, 'activities'), orderBy('date', 'desc'), limit(6));
+      const snap = await getDocs(q);
+      if (snap.empty) { grid.innerHTML = '<div class="empty-state"><i class="fa-solid fa-calendar-days"></i><p>ยังไม่มีกิจกรรม</p></div>'; return; }
+      grid.innerHTML = '';
+      snap.forEach(d => {
+        const a = d.data();
+        const img = a.imageUrl
+          ? `<img class="card-img" src="${a.imageUrl}" alt="${a.title}" loading="lazy"/>`
+          : `<div class="card-img-placeholder"><i class="fa-solid fa-calendar-days"></i></div>`;
+        grid.innerHTML += `
+          <div class="card">
+            ${img}
+            <div class="card-body">
+              <div class="card-date"><i class="fa-regular fa-calendar"></i>${formatDate(a.date)}</div>
+              <div class="card-title">${a.title || ''}</div>
+              <div class="card-desc">${a.description || ''}</div>
+              <span class="card-tag">กิจกรรม</span>
+            </div>
+          </div>`;
+      });
+    } catch(e) { grid.innerHTML = '<div class="empty-state"><i class="fa-solid fa-triangle-exclamation"></i><p>ไม่สามารถโหลดข้อมูลได้</p></div>'; }
+  }
+
+  // ============================================================
+  // BOOKS
+  // ============================================================
+  async function loadBooks() {
+    const grid = document.getElementById('booksGrid');
+    try {
+      const snap = await getDocs(collection(db, 'books'));
+      if (snap.empty) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><i class="fa-solid fa-book"></i><p>ยังไม่มีหนังสือแนะนำ</p></div>'; return; }
+      grid.innerHTML = '';
+      snap.forEach(d => {
+        const b = d.data();
+        const img = b.coverUrl
+          ? `<img class="book-cover" src="${b.coverUrl}" alt="${b.title}" loading="lazy"/>`
+          : `<div class="book-cover-placeholder"><i class="fa-solid fa-book"></i></div>`;
+        grid.innerHTML += `
+          <div class="book-card">
+            ${img}
+            <div class="book-info">
+              <div class="book-title">${b.title || ''}</div>
+              <div class="book-author">${b.author || ''}</div>
+              <div class="book-desc">${b.description || ''}</div>
+            </div>
+          </div>`;
+      });
+    } catch(e) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><i class="fa-solid fa-triangle-exclamation"></i><p>ไม่สามารถโหลดข้อมูลได้</p></div>'; }
+  }
+
+  // ============================================================
+  // E-BOOKS
+  // ============================================================
+  async function loadEbooks() {
+    const grid = document.getElementById('ebooksGrid');
+    try {
+      const snap = await getDocs(collection(db, 'ebooks'));
+      if (snap.empty) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><i class="fa-solid fa-tablet-screen-button"></i><p>ยังไม่มี E-Book</p></div>'; return; }
+      grid.innerHTML = '';
+      snap.forEach(d => {
+        const e = d.data();
+        const img = e.coverUrl
+          ? `<img class="ebook-cover" src="${e.coverUrl}" alt="${e.title}" loading="lazy"/>`
+          : `<div class="ebook-cover-placeholder"><i class="fa-solid fa-tablet-screen-button"></i></div>`;
+        grid.innerHTML += `
+          <div class="ebook-card">
+            ${img}
+            <div class="ebook-body">
+              <div class="ebook-title">${e.title || ''}</div>
+              <div class="book-desc">${e.description || ''}</div>
+              <a href="${e.link || '#'}" target="_blank" class="ebook-link"><i class="fa-solid fa-book-open"></i> อ่านออนไลน์</a>
+            </div>
+          </div>`;
+      });
+    } catch(e) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><i class="fa-solid fa-triangle-exclamation"></i><p>ไม่สามารถโหลดข้อมูลได้</p></div>'; }
+  }
+
+  // ============================================================
+  // CONTACT & SOCIAL
+  // ============================================================
+  async function loadContact() {
+    try {
+      const snap = await getDoc(doc(db, 'settings', 'contact'));
+      if (!snap.exists()) return;
+      const c = snap.data();
+      if (c.address)  document.getElementById('cAddress').textContent = c.address;
+      if (c.phone)    document.getElementById('cPhone').innerHTML = `<a href="tel:${c.phone}">${c.phone}</a>`;
+      if (c.email)    document.getElementById('cEmail').innerHTML = `<a href="mailto:${c.email}">${c.email}</a>`;
+      if (c.facebook) document.getElementById('cFacebook').innerHTML = `<a href="${c.facebook}" target="_blank">${c.facebook}</a>`;
+      if (c.mapEmbed) document.getElementById('mapEmbed').src = c.mapEmbed;
+
+      const fbUrl   = c.facebook  || '#';
+      const lineUrl = c.line      || '#';
+      const msgUrl  = c.messenger || '#';
+
+      // floating
+      document.getElementById('floatFb').href   = fbUrl;
+      document.getElementById('floatLine').href  = lineUrl;
+      document.getElementById('floatMsg').href   = msgUrl;
+      // contact section buttons
+      document.getElementById('fbBtn').href    = fbUrl;
+      document.getElementById('lineBtn').href  = lineUrl;
+      document.getElementById('msgBtn').href   = msgUrl;
+      // footer
+      document.getElementById('footerFb').href   = fbUrl;
+      document.getElementById('footerLine').href  = lineUrl;
+      document.getElementById('footerMsg').href   = msgUrl;
+    } catch(e) { console.warn('Contact load error', e); }
+  }
+
+  // ============================================================
+  // HOURS
+  // ============================================================
+  async function loadHours() {
+    try {
+      const snap = await getDoc(doc(db, 'settings', 'hours'));
+      if (!snap.exists()) return;
+      const h = snap.data();
+      if (h.content) {
+        document.getElementById('hoursContent').innerHTML = `<div id="hours-content">${h.content}</div>`;
+      }
+    } catch(e) { console.warn('Hours load error', e); }
+  }
+
+  // ============================================================
+  // VISIT COUNTER
+  // ============================================================
+  async function updateVisitCounter() {
+    try {
+      const { getDoc: gd, setDoc: sd, updateDoc, increment } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+      const { doc: docFn } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+      const ref = docFn(db, 'settings', 'stats');
+      const snap = await gd(ref);
+      let count = 1;
+      if (snap.exists()) {
+        count = (snap.data().visits || 0) + 1;
+        await updateDoc(ref, { visits: count });
+      } else {
+        await sd(ref, { visits: 1 });
+      }
+      document.getElementById('visitCount').textContent = count.toLocaleString('th-TH');
+    } catch(e) {
+      document.getElementById('visitCount').textContent = '—';
+    }
+  }
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  window.addEventListener('DOMContentLoaded', () => {
+    loadStaff();
+    loadNews();
+    loadActivities();
+    loadBooks();
+    loadEbooks();
+    loadContact();
+    loadHours();
+    updateVisitCounter();
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  });
+</script>
+
+<!-- ===== UI SCRIPTS ===== -->
+<script>
+  // Hamburger
+  document.getElementById('hamburgerBtn').addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('closeNav').addEventListener('click', () => closeMobileNav());
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Back to top
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+    // Navbar scroll effect
+    document.getElementById('navbar').style.boxShadow = window.scrollY > 50
+      ? '0 4px 24px rgba(45,27,105,0.3)' : '';
+  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.nav-menu a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
